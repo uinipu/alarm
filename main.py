@@ -2,6 +2,7 @@ import webbrowser
 from datetime import datetime
 import time
 import linecache
+import random
 
 #get the current time
 now = datetime.now()
@@ -14,7 +15,13 @@ cand=input()
 def alarma():
     f = open("romanianaltrock", "r")
     #print(f.read())
-    webbrowser.open(linecache.getline('romanianaltrock', 4))
+    line_count = 0.
+    for line in f:
+        if line != "\n":
+            line_count += 1.
+    f.close()
+    #print(line_count)
+    webbrowser.open(linecache.getline('romanianaltrock', random.randint(0, line_count)))
 
 #hour and minute of the time the alarm goes off
 h=int(cand[:2])
@@ -59,4 +66,3 @@ alarma()
 #can choose what song genre to have the ringtone be
 #each genre has a few songs in a text file
 #gui
-#
